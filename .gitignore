@@ -20,3 +20,5 @@ pnpm-lock.yaml
 # Env
 .env
 !.env.example
+.vercel
+.env*.local

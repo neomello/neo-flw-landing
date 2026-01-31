@@ -138,7 +138,7 @@
     </style>
 
     <!-- Scripts - Deferred & Async -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Structured Data - JSON-LD for SEO -->
     <script type="application/ld+json">
@@ -448,7 +448,9 @@
             document.getElementById('flowpay-error').style.display = 'none';
 
             document.getElementById('flowpay-modal').classList.add('active');
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
         }
 
         function closeFlowPay() {
@@ -538,10 +540,29 @@
         function showSuccess() {
             document.getElementById('flowpay-step-2').style.display = 'none';
             document.getElementById('flowpay-step-3').style.display = 'flex';
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
         }
     </script>
-    <script>lucide.createIcons();</script>
+    <script>
+        // Aguarda carregamento do Lucide antes de inicializar ícones
+        function initLucideIcons() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            } else {
+                // Tenta novamente após um pequeno delay se ainda não estiver carregado
+                setTimeout(initLucideIcons, 100);
+            }
+        }
+        
+        // Inicializa quando DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLucideIcons);
+        } else {
+            initLucideIcons();
+        }
+    </script>
     <script>
         // Header sempre visível - apenas muda estilo visual ao scrollar
         let ticking = false;
