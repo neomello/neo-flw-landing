@@ -1,0 +1,145 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Página Principal -->
+  <url>
+    <loc>https://flowoff.xyz/</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Experiência Desktop -->
+  <url>
+    <loc>https://flowoff.xyz/desktop</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Miniapp Console Project -->
+  <url>
+    <loc>https://flowoff.xyz/miniapp</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Rotas SPA (Single Page Application) -->
+  <url>
+    <loc>https://flowoff.xyz/#home</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://flowoff.xyz/#projects</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://flowoff.xyz/#start</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <url>
+    <loc>https://flowoff.xyz/#ecosystem</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+
+  <!-- GPTs MELLØ -->
+  <url>
+    <loc>https://chatgpt.com/g/g-68537da11ef081919947baedc3f00ad4-pai-do-marketing-v-2050</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://chatgpt.com/g/g-6854ff9169948191aad36d7f6ae02e8d-designer-v-2050-mello-tm-pro</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Ecossistema FlowOFF -->
+  <url>
+    <loc>https://flowpaycash.netlify.app/</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Token $NEOFLW na Polygon -->
+  <url>
+    <loc>https://polygonscan.com/token/0x59aa4EaE743d608FBDd4205ebA59b38DCA755Dd2</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://polygonscan.com/address/0x59aa4EaE743d608FBDd4205ebA59b38DCA755Dd2</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://dexscreener.com/polygon/0x59aa4EaE743d608FBDd4205ebA59b38DCA755Dd2</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://app.uniswap.org/tokens/polygon/0x59aa4EaE743d608FBDd4205ebA59b38DCA755Dd2</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+
+  <!-- Recursos PWA -->
+  <url>
+    <loc>https://flowoff.xyz/manifest.webmanifest</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://flowoff.xyz/sw.js</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Termos e Políticas -->
+  <url>
+    <loc>https://flowoff.xyz/terms.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://flowoff.xyz/privacy.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

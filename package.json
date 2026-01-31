@@ -1,0 +1,13 @@
+{
+    "name": "neo-flowoff-landing",
+    "version": "1.0.0",
+    "description": "Premium Landing Page for FlowOFF Agency",
+    "scripts": {
+        "dev": "npx -y browser-sync start --server --files '*.html, *.css'",
+        "lint": "npx -y htmlhint *.html && npx -y stylelint *.css",
+        "push": "git add . && git commit -m 'chore: update landing page assets' && git push origin main"
+    },
+    "keywords": [],
+    "author": "NEØ Protocol",
+    "license": "MIT"
+}

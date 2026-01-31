@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+.cursor/
+
+# Vercel / Deploy
+.vercel/
+dist/
+build/
+
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# Env
+.env*
