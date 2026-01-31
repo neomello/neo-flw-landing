@@ -485,6 +485,19 @@
                     })
                 });
 
+                // Verifica se a resposta é OK
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Erro ${response.status}: ${response.statusText}. ${errorText.substring(0, 100)}`);
+                }
+
+                // Verifica se o conteúdo é JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    throw new Error(`Resposta inválida da API. Esperado JSON, recebido: ${contentType || 'text/html'}`);
+                }
+
                 const data = await response.json();
 
                 if (data.success) {
@@ -501,7 +514,21 @@
                 }
             } catch (error) {
                 console.error('FlowPay Error:', error);
-                errorEl.innerText = error.message || 'Erro ao gerar PIX. Tente novamente.';
+                let errorMessage = 'Erro ao gerar PIX. Tente novamente.';
+                
+                if (error.message) {
+                    if (error.message.includes('JSON')) {
+                        errorMessage = 'Erro de comunicação com a API. Verifique se o serviço está disponível.';
+                    } else if (error.message.includes('404')) {
+                        errorMessage = 'Endpoint da API não encontrado. Verifique a configuração.';
+                    } else if (error.message.includes('500')) {
+                        errorMessage = 'Erro interno do servidor. Tente novamente em alguns instantes.';
+                    } else {
+                        errorMessage = error.message;
+                    }
+                }
+                
+                errorEl.innerText = errorMessage;
                 errorEl.style.display = 'block';
             } finally {
                 btn.disabled = false;
@@ -525,6 +552,20 @@
             statusInterval = setInterval(async () => {
                 try {
                     const response = await fetch(`${FLOWPAY_API}/api/charges/status?charge_id=${chargeId}`);
+                    
+                    // Verifica se a resposta é OK
+                    if (!response.ok) {
+                        console.warn(`Status check: ${response.status} ${response.statusText}`);
+                        return; // Continua tentando
+                    }
+
+                    // Verifica se o conteúdo é JSON
+                    const contentType = response.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                        console.warn('Status check: resposta não é JSON, ignorando');
+                        return; // Continua tentando
+                    }
+
                     const data = await response.json();
 
                     if (data.success && data.status === 'completed') {
@@ -532,6 +573,7 @@
                         showSuccess();
                     }
                 } catch (e) {
+                    // Erros de rede ou parsing são silenciosos para não interromper o polling
                     console.error('Status check error:', e);
                 }
             }, 5000);
