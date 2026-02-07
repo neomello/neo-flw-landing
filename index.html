@@ -383,7 +383,7 @@
         <div class="flowpay-card">
             <button class="flowpay-close" onclick="closeFlowPay()"><i data-lucide="x"></i></button>
             <div class="flowpay-header">
-                <img src="public/flowpay-horizontal-logo.png" alt="FlowPay" class="flowpay-logo-img">
+                <img src="public/neoflowoff_logo.png" alt="NEØ.FLOWOFF" class="flowpay-logo-img">
                 <h3 id="flowpay-product-name">Pacote Start</h3>
                 <p id="flowpay-product-price">R$ 1.500,00</p>
             </div>
@@ -428,6 +428,11 @@
                 </p>
                 <button onclick="closeFlowPay()" class="btn btn-primary" style="margin-top: 20px;">Fechar</button>
             </div>
+
+            <div class="flowpay-footer">
+                <span style="font-size: 0.7rem; color: #9aa0aa;">Pagamento processado por</span>
+                <img src="public/flowpay-horizontal-logo.png" alt="FlowPay" style="height: 18px; opacity: 0.6; margin-left: 6px; vertical-align: middle;">
+            </div>
         </div>
     </div>
 
@@ -435,7 +440,7 @@
         let currentProduct = { name: '', price: 0 };
         let chargeId = null;
         let statusInterval = null;
-        const FLOWPAY_API = 'https://flowpaypix.netlify.app';
+        const FLOWPAY_API = 'https://flowpay-production-10d8.up.railway.app';
 
         function openFlowPay(name, price) {
             currentProduct = { name, price };
@@ -474,13 +479,13 @@
             errorEl.style.display = 'none';
 
             try {
-                const response = await fetch(`${FLOWPAY_API}/api/charges/create`, {
+                const response = await fetch(`${FLOWPAY_API}/api/create-charge-landing`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         amount_brl: currentProduct.price,
                         product_ref: `landing-${currentProduct.name.toLowerCase()}`,
-                        customer_ref: cpf,
+                        customer_cpf: cpf,
                         customer_email: email
                     })
                 });
@@ -551,7 +556,7 @@
             if (statusInterval) clearInterval(statusInterval);
             statusInterval = setInterval(async () => {
                 try {
-                    const response = await fetch(`${FLOWPAY_API}/api/charges/status?charge_id=${chargeId}`);
+                    const response = await fetch(`${FLOWPAY_API}/api/charge/${chargeId}`);
                     
                     // Verifica se a resposta é OK
                     if (!response.ok) {
@@ -568,7 +573,8 @@
 
                     const data = await response.json();
 
-                    if (data.success && data.status === 'completed') {
+                    const paidStatuses = ['PIX_PAID', 'PENDING_REVIEW', 'APPROVED', 'SETTLED', 'COMPLETED'];
+                    if (data.success && paidStatuses.includes(data.status)) {
                         clearInterval(statusInterval);
                         showSuccess();
                     }

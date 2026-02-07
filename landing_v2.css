@@ -2038,3 +2038,12 @@ footer a:focus-visible {
     text-align: center;
     display: none;
 }
+
+.flowpay-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
